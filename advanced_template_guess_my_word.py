@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Guess-My-Word is a game where the player has to guess a word.
-<your description> 
-Author: <name>
-Company: <company>
-Copyright: <year>
+This is a based off a popular game which went viral in 2020
+Author: Goya Zheng
+Company: None
+Copyright: 2024
 
 """
 # Your code must use PEP8
@@ -12,7 +12,6 @@ Copyright: <year>
 
 # This code uses terms and symbols adopted from the following source:
 # See https://github.com/3b1b/videos/blob/68ca9cfa8cf5a41c965b2015ec8aa5f2aa288f26/_2022/wordle/simulations.py#L104
-
 
 MISS = 0  # _-.: letter not found ⬜
 MISSPLACED = 1  # O, ?: letter in wrong place 🟨

@@ -9,21 +9,31 @@ TARGET_WORDS = './word-bank/target_words.txt'
 VALID_WORDS = './word-bank/all_words.txt'
 
 MAX_TRIES = 6
-
-# TODO: select target word at random from TARGET_WORDS
-target_word = 'hello'
+tries = 0
+# DONE: select target word at random from TARGET_WORDS
+target_word = random.choice(open(TARGET_WORDS).read().split())
+print(target_word)
 
 # TODO: repeat for MAX_TRIES valid attempts
 # (start loop)
-guess = input("Enter guess? ")
+while tries < MAX_TRIES:
+    guess = input("Enter guess? ")
+    if guess in open(VALID_WORDS).read().split():
+        print("You guess is a valid guess")
+        tries += 1
+    else:
+        print("Invalid guess, please try a real 5 letter word")
 
-# TODO: ensure guess in VALID_WORDS
+# DONE: ensure guess in VALID_WORDS as above
+#     if guess in (open(VALID_WORDS).read(), target_word):
+#         print("Your guess is a valid guess")
 
 # TODO: provide clues for each character in the guess using your scoring algorithm
-if guess == target_word:
-    print("Your guess is correct!")
-else:
-    print("Your guess is wrong!")
+#     if guess == target_word:
+#         print("Your guess is correct!")
+#     else:
+#         tries += 1
+#         print("Your guess is wrong!")
 
 # (end loop)
 print("Game Over")
