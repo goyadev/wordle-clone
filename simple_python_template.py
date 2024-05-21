@@ -14,7 +14,7 @@ tries = 0
 target_word = random.choice(open(TARGET_WORDS).read().split())
 # print("the target word is: " + target_word)
 
-print("Welcome to my simple wordle clone. Try to find the 5-letter word in 6 guesses or less.")
+print("Welcome to my simple wordle clone. Try to guess the 5-letter word in 6 guesses or less.")
 print("2 = right letter, right place, 1 = right letter, wrong place, 0 = not in word")
 # DONE: repeat for MAX_TRIES valid attempts
 # (start loop)
