@@ -10,23 +10,40 @@ VALID_WORDS = './word-bank/all_words.txt'
 
 MAX_TRIES = 6
 tries = 0
+tries_count = 0
 # DONE: select target word at random from TARGET_WORDS
-target_word = random.choice(open(TARGET_WORDS).read().split())
-# print("the target word is: " + target_word)
+# target_word = random.choice(open(TARGET_WORDS).read().split())
+with open(TARGET_WORDS) as file:
+    target_word_list = file.read()
+target_word_list = target_word_list.split()
+target_word = random.choice(target_word_list)
 
-print("Welcome to my simple wordle clone. Try to guess the 5-letter word in 6 guesses or less.")
-print("2 = right letter, right place, 1 = right letter, wrong place, 0 = not in word")
+with open(VALID_WORDS) as file:
+    valid_word_list = file.read()
+valid_word_list = valid_word_list.split()
+
+# [helper for debugging, uncomment below, so you can see the word]
+# print("For testing, the target word is: " + target_word)
+print('✌⊂(✰‿✰)つ✌')
+print("Welcome to my simple wordle clone.\nTry to guess the 5-letter word in 6 guesses or less.")
+print("\n- ? = right letter, wrong place\n- X = not in word\n")
+
+player_name = input("Enter your player name\n(Want to be anonymous? Press 'enter'):")
+if player_name == '' or player_name == ' ':
+    player_name = random.choice(valid_word_list) + "-player"
+print("Hello " + player_name + "\n")
 # DONE: repeat for MAX_TRIES valid attempts
 # (start loop)
 while tries < MAX_TRIES:
     guess = input("Enter guess? ")
-    if guess in open(VALID_WORDS).read().split():
+    guess_lower = guess.lower()
+    if guess_lower in valid_word_list:
         print("Your guess is a valid guess")
         tries += 1
+        tries_count += 1
 
     else:
         print("Invalid guess, please try a real 5 letter word")
-        tries += 0
         continue
     print("Number of tries: " + str(tries) + "/" + str(MAX_TRIES))
 
@@ -44,9 +61,9 @@ while tries < MAX_TRIES:
         target_list.append(letter)
     # print("target: " + str(target_list))
 
-    for letter in guess:
+    for letter in guess_lower:
         guess_list.append(letter)
-    print("guess:  " + str(guess_list))
+    # print("guess:  " + str(guess_list))
 
     # # This gives many hints to the player. It was a first try at scoring
     # for element in target_list:
@@ -64,24 +81,46 @@ while tries < MAX_TRIES:
 
     for key, value in guess_list_tuple:
         if value in target_list_tuple[key]:
-            score_list.append("2")
+            score_list.append(value)
         elif value in target_list:
-            score_list.append("1")
+            score_list.append("?")
         else:
-            score_list.append("0")
-    print("Score:  " + str(score_list))
+            score_list.append("X")
+    # print("Score:  " + str(score_list))
+
+    guess_clue = ''
+    for element in guess_list:
+        guess_clue += str(element).upper() + " "
+    print("GUESS: " + guess_clue)
+
+    score_clue = ''
+    for element in score_list:
+        score_clue += str(element).upper() + " "
+    print("SCORE: " + score_clue)
 
     # For later, find a way to have: 🟩🟧🟥 as options for scoring without messing up the alignment
-
-    if guess == target_word:
-        print("Your guess is correct!")
+    success_statement = ''
+    if guess_lower == target_word:
+        print('٩(^‿^)۶')
+        print("Your guess is correct!\n")
         tries = 6
+        success_statement = 'Successful'
 
-    elif guess != target_word:
-        print("Your guess is wrong!")
+    elif guess_lower != target_word:
+        print('(✖╭╮✖)')
+        print("Your guess is wrong!\n")
+        success_statement = 'Unsuccessful'
 
 # (end loop)
+
+save_file = 'scores.txt'
+
+with open(save_file, 'a') as file:
+    file.write(str(player_name) + ', Target word:'+ str(target_word) + ", Number of tries:" + str(tries_count) + ', '+ str(success_statement) + '\n')
+
+
 print("Game Over")
+print("The word was " + target_word)
 
 
 # NOTES:
