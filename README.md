@@ -9,7 +9,7 @@ Use the simple_python_template.py
 ## Project requirements
 
 - [x] Develop a plan for implementation of the game
-- [x]Document and create an algorithm for scoring the accuracy of guesses
+- [x] Document and create an algorithm for scoring the accuracy of guesses
 - [x] Develop a solution including documentation and testing
 - [x] Be adaptable and responsive to change
 - [x] Have a score file created to track high scores
