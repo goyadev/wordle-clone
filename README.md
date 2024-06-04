@@ -17,16 +17,16 @@ Use the simple_python_template.py
 
 ### Screenshot of opening of the game
 
-![Shows opening game and instructions to player](images/wordle-clone-start.png)
+![opening instructions and player name input](images/wordle-start.png)
 
 ### Screenshot of scoring of the game
 
-![Displays scoring visual of the game](images/wordle-clone-score.png)
+![score and difference between target word and guess](images/wordle-wrong.png)
 
-### Screenshot of the end of the game
+### Screenshot of the end of the game and success
 
-![Displays end of the game](images/wordle-clone-end.png)
+![Success, you won, this is what the end of the game displays with some cute ascii art](images/wordle-success.png)
 
 ### Screenshot of the output of the score file
 
-![text of output for score.txt file](images/wordle-clone-scoretxt-created.png)
+![Sample of the score file, or a leaderboard](images/wordle-score-file.png)
