@@ -26,7 +26,7 @@ valid_word_list = valid_word_list.split()
 # print("For testing, the target word is: " + target_word)
 print('✌⊂(✰‿✰)つ✌')
 print("Welcome to my simple wordle clone.\nTry to guess the 5-letter word in 6 guesses or less.")
-print("\n- ? = right letter, wrong place\n- X = not in word\n")
+print("\n- ? = right letter, wrong place\n- / = not in word\n")
 
 player_name = input("Enter your player name\n(Want to be anonymous? Press 'enter'):")
 if player_name == '' or player_name == ' ':
@@ -85,7 +85,7 @@ while tries < MAX_TRIES:
         elif value in target_list:
             score_list.append("?")
         else:
-            score_list.append("X")
+            score_list.append("/")
     # print("Score:  " + str(score_list))
 
     guess_clue = ''
@@ -116,7 +116,7 @@ while tries < MAX_TRIES:
 save_file = 'scores.txt'
 
 with open(save_file, 'a') as file:
-    file.write(str(player_name) + ', Target word:'+ str(target_word) + ", Number of tries:" + str(tries_count) + ', '+ str(success_statement) + '\n')
+    file.write(player_name + ', Word:' + target_word + ", Tries:" + str(tries_count) + ', ' + success_statement + '\n')
 
 
 print("Game Over")
